@@ -1,5 +1,6 @@
 .todo-wrapper {
-  width: 600px !important;
+  max-width: 600px !important;
+  width: 100% !important;
   margin: 0 auto;
   padding: 30px;
 }

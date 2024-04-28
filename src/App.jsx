@@ -11,8 +11,8 @@ function App() {
 
 
   const todos = useSelector((state) => state.todos.data)
-  const loading = useSelector(state => state.todos.loading);
-  const error = useSelector(state => state.todos.error);
+  const loading = useSelector(state => state.todos.loading)
+  const error = useSelector(state => state.todos.error)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -36,12 +36,12 @@ function App() {
   const filteredTodos = todos.filter((todo) => {
     if (status === -1) return true;
     return todo.status === status;
-  });
+  })
 
   const handlerChangeStatus = (event) => {
     const filteredStatus = event.target.getAttribute('data-filter');
     setStatus(Number(filteredStatus));
-  };
+  }
 
   const editTodo = (id, name, index) => {
     fetch(`${url}/todos/${id}`, {
@@ -145,9 +145,9 @@ function App() {
         dispatch(setLoading(false))
       })
     document.querySelector('input[type=text]').value = '';
-  };
+  }
 
-  const RenderTodoList = todos => {
+  const RenderTodoList = () => {
     return (
       <div className="todo_app_list">
         {
@@ -194,7 +194,7 @@ function App() {
           <button className={"todo_app_filter_item " + (status == 0 ? 'active' : '')} data-filter="0" onClick={handlerChangeStatus}>Active</button>
         </div>
         {
-          loading ? <RenderLoading /> : error == null ? <RenderTodoList/> : <RenderErrorMessage />
+          loading ? <RenderLoading /> : error == null ? <RenderTodoList /> : <RenderErrorMessage />
         }
       </div>
     </div>
